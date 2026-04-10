@@ -1,4 +1,5 @@
 import { getPosts } from "@/lib/notion";
+import { getPostSummary } from "@/lib/ai";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -27,6 +28,13 @@ export default async function StartupNewsPage() {
   const allPosts = await getPosts();
   const posts = allPosts.filter((p: any) =>
     p.category?.toLowerCase().includes("news")
+  );
+
+  const postsWithSummaries = await Promise.all(
+    posts.map(async (post: any) => ({
+      ...post,
+      summary: await getPostSummary(post.id, post.title, post.category ?? "Startup News"),
+    }))
   );
 
   return (
@@ -62,7 +70,7 @@ export default async function StartupNewsPage() {
 
         {/* Article list */}
         <ul className="divide-y divide-gray-200 bg-white rounded-sm shadow-sm">
-          {posts.map((post: any, i: number) => (
+          {postsWithSummaries.map((post: any, i: number) => (
             <li key={post.id}>
               <Link
                 href={`/blog/${post.slug}`}
@@ -79,6 +87,9 @@ export default async function StartupNewsPage() {
                   >
                     {post.title}
                   </h2>
+                  {post.summary && (
+                    <p className="text-gray-500 text-xs mt-1 line-clamp-2">{post.summary}</p>
+                  )}
                   <p className="text-gray-400 text-xs mt-1">{timeAgo(post.date)}</p>
                 </div>
 

@@ -155,6 +155,8 @@ export default async function Home() {
               Nagpur is no longer just central India's orange capital. It is becoming a hub for technology,
               logistics, agri-tech, and manufacturing innovation. Nagpur Startup Hub exists to document, amplify,
               and celebrate this growth, for founders, job seekers, investors, and curious minds alike.
+              Every article on this platform is enriched with AI-generated summaries powered by advanced language
+              models, so you always know what you are about to read before you click.
             </p>
 
             {/* Stat tiles */}
