@@ -25,6 +25,14 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Newsletter not configured." }, { status: 500 });
     }
 
+    // Check if contact already exists
+    const { data: existingData } = await resend.contacts.list({ audienceId });
+    const existingContacts = (existingData as any)?.data ?? [];
+    const alreadyExists = existingContacts.some((c: any) => c.email === email);
+    if (alreadyExists) {
+      return NextResponse.json({ alreadySubscribed: true });
+    }
+
     const { error } = await resend.contacts.create({
       email,
       audienceId,
@@ -32,11 +40,6 @@ export async function POST(req: Request) {
     });
 
     if (error) {
-      // Treat "already exists" as a soft duplicate, not a hard error
-      const msg = (error as any)?.message ?? "";
-      if (msg.toLowerCase().includes("already exists")) {
-        return NextResponse.json({ alreadySubscribed: true });
-      }
       return NextResponse.json({ error: "Something went wrong. Please try again." }, { status: 500 });
     }
 
