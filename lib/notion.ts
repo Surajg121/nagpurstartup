@@ -7,7 +7,7 @@ const notion = new Client({
 
 const databaseId = process.env.NOTION_DATABASE_ID!;
 
-// Cache the data source ID for 1 hour — it never changes
+// Cache the data source ID for 1 hour - it never changes
 const getDataSourceId = unstable_cache(
   async (): Promise<string> => {
     const db = await notion.databases.retrieve({ database_id: databaseId });
@@ -20,7 +20,7 @@ const getDataSourceId = unstable_cache(
   { revalidate: 3600 }
 );
 
-// Cache post list for 60 seconds — fast revalidation so new posts appear quickly
+// Cache post list for 60 seconds - fast revalidation so new posts appear quickly
 export const getPosts = unstable_cache(
   async () => {
     const dataSourceId = await getDataSourceId();
