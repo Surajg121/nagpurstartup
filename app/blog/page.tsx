@@ -2,6 +2,19 @@ import { getPosts } from "@/lib/notion";
 import { getPostSummary } from "@/lib/ai";
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "All Stories",
+  description:
+    "Every startup insight, founder story, and news article published on Nagpur Startup Hub — sorted by latest first.",
+  alternates: { canonical: "https://nagpurstartup.in/blog" },
+  openGraph: {
+    title: "All Stories | Nagpur Startup Hub",
+    description: "Every insight, founder story, and startup news article in one place.",
+    url: "https://nagpurstartup.in/blog",
+  },
+};
 
 function timeAgo(dateStr: string): string {
   if (!dateStr) return "";

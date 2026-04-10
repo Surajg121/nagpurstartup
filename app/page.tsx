@@ -1,6 +1,20 @@
 import { getPosts } from "@/lib/notion";
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Nagpur Startup Hub — Insights, Stories & Opportunities",
+  description:
+    "Explore startup insights, founder stories, breaking news, and job opportunities from Nagpur — central India's fastest-growing startup ecosystem with 1,200+ registered startups.",
+  alternates: { canonical: "https://nagpurstartup.in" },
+  openGraph: {
+    title: "Nagpur Startup Hub — Insights, Stories & Opportunities",
+    description:
+      "Startup news, founder journeys, market insights, and Nagpur jobs — all in one place.",
+    url: "https://nagpurstartup.in",
+  },
+};
 
 function timeAgo(dateStr: string): string {
   if (!dateStr) return "";

@@ -1,6 +1,24 @@
 import { getPosts } from "@/lib/notion";
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Startup Jobs in Nagpur",
+  description:
+    "Find curated job opportunities at Nagpur-based startups. Roles in tech, marketing, operations, sales, and more — from the heart of central India's startup scene.",
+  keywords: [
+    "startup jobs Nagpur", "jobs in Nagpur startups", "Nagpur tech jobs",
+    "startup hiring Nagpur", "Nagpur job opportunities", "central India startup jobs",
+    "Vidarbha startup jobs", "Nagpur employment startups",
+  ],
+  alternates: { canonical: "https://nagpurstartup.in/job-opportunities" },
+  openGraph: {
+    title: "Startup Jobs in Nagpur | Nagpur Startup Hub",
+    description: "Curated startup job openings in Nagpur — find your next role in central India's fastest-growing ecosystem.",
+    url: "https://nagpurstartup.in/job-opportunities",
+  },
+};
 
 function timeAgo(dateStr: string): string {
   if (!dateStr) return "";

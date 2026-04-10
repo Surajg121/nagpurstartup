@@ -2,6 +2,23 @@ import { getPosts } from "@/lib/notion";
 import { getPostSummary } from "@/lib/ai";
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Startup News",
+  description:
+    "The latest startup news — funding rounds, product launches, acquisitions, and policy updates from the Indian startup ecosystem, curated and delivered fast.",
+  keywords: [
+    "startup news India", "startup funding news", "Indian startup ecosystem news",
+    "new startup launches India", "startup acquisitions India", "Nagpur startup news",
+  ],
+  alternates: { canonical: "https://nagpurstartup.in/startup-news" },
+  openGraph: {
+    title: "Startup News | Nagpur Startup Hub",
+    description: "Funding rounds, launches, acquisitions — the latest from the startup world, curated for you.",
+    url: "https://nagpurstartup.in/startup-news",
+  },
+};
 
 function timeAgo(dateStr: string): string {
   if (!dateStr) return "";

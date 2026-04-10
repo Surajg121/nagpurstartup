@@ -2,6 +2,23 @@ import { getPosts } from "@/lib/notion";
 import { getPostSummary } from "@/lib/ai";
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Founder Stories",
+  description:
+    "First-hand journeys from startup founders — the real challenges, pivots, failures, and wins behind building a company from scratch.",
+  keywords: [
+    "founder stories India", "startup founder journey", "entrepreneur story",
+    "startup success stories India", "building a startup India", "founder interviews",
+  ],
+  alternates: { canonical: "https://nagpurstartup.in/founder-stories" },
+  openGraph: {
+    title: "Founder Stories | Nagpur Startup Hub",
+    description: "Real journeys from founders: the struggles, pivots, and wins that textbooks never cover.",
+    url: "https://nagpurstartup.in/founder-stories",
+  },
+};
 
 function timeAgo(dateStr: string): string {
   if (!dateStr) return "";

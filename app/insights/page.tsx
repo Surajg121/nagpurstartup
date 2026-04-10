@@ -2,6 +2,23 @@ import { getPosts } from "@/lib/notion";
 import { getPostSummary } from "@/lib/ai";
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Startup Insights",
+  description:
+    "Deep dives, trend analysis, and expert perspectives on the startup world. From market opportunities and policy shifts to actionable advice for founders at every stage.",
+  keywords: [
+    "startup insights", "startup trends India", "startup analysis", "entrepreneur advice",
+    "startup market opportunities", "India startup policy", "founder tips",
+  ],
+  alternates: { canonical: "https://nagpurstartup.in/insights" },
+  openGraph: {
+    title: "Startup Insights | Nagpur Startup Hub",
+    description: "Deep dives and expert perspectives on startup trends, markets, and founder strategies.",
+    url: "https://nagpurstartup.in/insights",
+  },
+};
 
 function timeAgo(dateStr: string): string {
   if (!dateStr) return "";
