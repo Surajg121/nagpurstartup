@@ -1,11 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "duplicate" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setEmail("");
+    setStatus("idle");
+    setErrorMsg("");
+  }, [pathname]);
 
   async function handleSubscribe(e: React.FormEvent) {
     e.preventDefault();
