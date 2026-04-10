@@ -1,5 +1,4 @@
 import { getPosts } from "@/lib/notion";
-import { getPostSummary } from "@/lib/ai";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
@@ -43,12 +42,10 @@ export default async function AllStoriesPage() {
     (p: any) => !p.category?.toLowerCase().includes("job")
   );
 
-  const postsWithSummaries = await Promise.all(
-    posts.map(async (post: any) => ({
-      ...post,
-      summary: await getPostSummary(post.id, post.title, post.category ?? ""),
-    }))
-  );
+  const postsWithSummaries = posts.map((post: any) => ({
+    ...post,
+    summary: post.excerpt ?? "",
+  }));
 
   return (
     <div className="bg-gray-100 min-h-screen">
